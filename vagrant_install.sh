@@ -10,7 +10,7 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password passwor
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 
 echo "--- Installing base packages ---"
-sudo apt-get install -y wget vim curl python-software-properties
+sudo apt-get install -y wget vim tmux curl python-software-properties
 
 echo "--- Updating packages list ---"
 sudo apt-get update
