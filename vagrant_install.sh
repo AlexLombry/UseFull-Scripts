@@ -62,11 +62,22 @@ sudo chmod +x /usr/local/bin/laravel
 
 mysql -u root -p root -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 
-
 echo "--- Installing Oh-My-Zsh ---"
 sudo apt-get install -y zsh
 sudo su - vagrant -c 'wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh'
 sudo su - vagrant -c 'chsh -s `which zsh`'
 
+echo "--- Setting up Vim ---"
+mkdir -p /home/vagrant/.vim/backup
+mkdir -p /home/vagrant/.vim/swap
+
+# Install Vundle and set owner of .vim files
+git clone https://github.com/gmarik/vundle.git /home/vagrant/.vim/bundle/vundle
+sudo chown -R vagrant:vagrant /home/vagrant/.vim
+
+# Grab .vimrc and set owner
+curl https://gist.github.com/fideloper/a335872f476635b582ee/raw/.vimrc > /home/vagrant/.vimrc
+sudo chown vagrant:vagrant /home/vagrant/.vimrc
+sudo su - vagrant -c 'vim +BundleInstall +qall'
 
 echo "--- All set to go! Would you like to play a game? ---"
