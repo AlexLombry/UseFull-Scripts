@@ -62,4 +62,11 @@ sudo chmod +x /usr/local/bin/laravel
 
 mysql -u root -p root -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 
+
+echo "--- Installing Oh-My-Zsh ---"
+sudo apt-get install -y zsh
+sudo su - vagrant -c 'wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh'
+sudo su - vagrant -c 'chsh -s `which zsh`'
+
+
 echo "--- All set to go! Would you like to play a game? ---"
