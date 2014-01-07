@@ -50,5 +50,5 @@ php artisan dump-autoload -o
 chmod -R 0777 app/storage
 
 echo "Do not forget to add in app/config/app.php into providers array : "
-echo "way\Form\FormServiceProvider"
-echo "way\Generators\GeneratorsServiceProvider"
+echo "Way\Form\FormServiceProvider"
+echo "Way\Generators\GeneratorsServiceProvider"
