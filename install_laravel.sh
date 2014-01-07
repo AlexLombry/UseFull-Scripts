@@ -45,7 +45,7 @@ composer require way/generators
 composer require way/form
 
 php artisan config:publish way/form
-php artisan dump-autoload -o
+composer dump-autoload -o
 
 chmod -R 0777 app/storage
 
