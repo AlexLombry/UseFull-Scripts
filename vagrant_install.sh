@@ -22,7 +22,7 @@ echo "--- Updating packages list ---"
 sudo apt-get update
 
 echo "--- Installing PHP-specific packages ---"
-sudo apt-get install -y openssh-server php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt php5-readline mysql-server-5.5 php5-mysql git-core
+sudo apt-get install -y openssh-server php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt php5-readline mysql-server-5.5 php5-mysql git-core phpunit
 
 echo "--- Installing and configuring Xdebug ---"
 sudo apt-get install -y php5-xdebug
@@ -62,22 +62,41 @@ sudo chmod +x /usr/local/bin/laravel
 
 mysql -u root -p root -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 
-echo "--- Installing Oh-My-Zsh ---"
-sudo apt-get install -y zsh
-sudo su - vagrant -c 'wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh'
-sudo su - vagrant -c 'chsh -s `which zsh`'
+#echo "--- Installing Oh-My-Zsh ---"
+#sudo apt-get install -y zsh
+#sudo su - vagrant -c 'wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh'
+#sudo su - vagrant -c 'chsh -s `which zsh`'
 
-echo "--- Setting up Vim ---"
-mkdir -p /home/vagrant/.vim/backup
-mkdir -p /home/vagrant/.vim/swap
+# Modify bashrc file
+cat << EOF | tee -a /home/vagrant/.bashrc
+# Laravel
+alias artisan="php artisan"
+alias migrate="php artisan migrate"
+alias serve="php artisan serve"
+alias dump="php artisan dump"
+alias t="phpunit"
 
-# Install Vundle and set owner of .vim files
-git clone https://github.com/gmarik/vundle.git /home/vagrant/.vim/bundle/vundle
-sudo chown -R vagrant:vagrant /home/vagrant/.vim
+# Generators Package
+alias g:c="php artisan generate:controller"
+alias g:m="php artisan generate:model"
+alias g:v="php artisan generate:view"
+alias g:mig="php artisan generate:migration"
+alias g:t="php artisan generate:test"
+alias g:r="php artisan generate:resource"
+alias g:s="php artisan generate:scaffold"
+alias g:f="php artisan generate:form"
+alias g:p="php artisan generate:pivot"
 
-# Grab .vimrc and set owner
-curl https://gist.github.com/fideloper/a335872f476635b582ee/raw/.vimrc > /home/vagrant/.vimrc
-sudo chown vagrant:vagrant /home/vagrant/.vimrc
-sudo su - vagrant -c 'vim +BundleInstall +qall'
+# Git
+alias ga="git add"
+alias gaa="git add ."
+alias gc="git commit -m"
+alias gp="git push"
+alias gs="git status"
+alias gl="git log"
+
+# Apache restart
+alias restartApache="sudo apachectl restart"
+EOF
 
 echo "--- All set to go! Would you like to play a game? ---"
