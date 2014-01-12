@@ -1,0 +1,20 @@
+<snippet>
+    <content><![CDATA[
+try
+{
+    if ( ! ${1:varname} = ${2:modelname}::find(\$id) ) throw new InvalidException(null, 'Unable to find that');
+
+    ${1:varname}->update(Input::all());
+
+    return Redirect::route('${3:viewname}', \$id)->withFlashMessage('Great, updated');
+}
+catch(ValidationException \$e)
+{
+    return Redirect::back()->withInput()->withErrors(\$e->getErrors());
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>larupdate</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>
