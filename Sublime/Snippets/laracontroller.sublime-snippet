@@ -1,0 +1,26 @@
+<snippet>
+    <content><![CDATA[
+class ${1:className}Controller extends BaseController {
+
+    /**
+     * ${2:varname} attributs
+     * @var object
+     */
+    protected \$${2:varname};
+
+    /**
+     * constructor
+     * @param ${3:Modelname} \$${2:varname}
+     */
+    public function __construct(${3:Modelname} \$${2:varname})
+    {
+        \$this->${2:varname} = \$${2:varname};
+    }
+
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>laracontroller</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>
