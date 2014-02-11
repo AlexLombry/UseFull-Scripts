@@ -1,0 +1,27 @@
+<snippet>
+    <content><![CDATA[
+class ${1:classname}TableSeeder extends Seeder {
+
+    public function run()
+    {
+        \$faker = Faker\Factory::create();
+
+        // DB::table('${2:tablename}')->truncate();
+
+        ${3:modelname}::truncate();
+
+        foreach (range(1, 30) as \$index)
+        {
+            ${3:modelname}::create([
+                'name' => \$faker->name,
+            ]);
+        }
+    }
+
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>laraseeder</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

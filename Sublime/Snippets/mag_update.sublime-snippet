@@ -1,0 +1,17 @@
+<snippet>
+    <content><![CDATA[
+if ( ! \$${1:var} = ${2:Model}::find(\$id) ) throw new InvalidException(null, 'Unable to find that');
+\$${1:var}->update(Input::all());
+
+if (\$${1:var}->isSaved()) {
+    return Redirect::route('${3:routes}', \$id)->withFlashMessage('Great, updated');
+}
+
+return Redirect::back()->withInput()->withErrors(\$${1:var}->errors());
+
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>mag_update</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

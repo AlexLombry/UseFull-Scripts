@@ -2,9 +2,9 @@
     <content><![CDATA[
 try
 {
-    if ( ! ${1:varname} = ${2:modelname}::find(\$id) ) throw new InvalidException(null, 'Unable to find that');
+    if ( ! \$${1:varname} = ${2:modelname}::find(\$id) ) throw new InvalidException(null, 'Unable to find that');
 
-    ${1:varname}->update(Input::all());
+    \$${1:varname}->update(Input::all());
 
     return Redirect::route('${3:viewname}', \$id)->withFlashMessage('Great, updated');
 }

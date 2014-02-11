@@ -1,0 +1,14 @@
+<snippet>
+    <content><![CDATA[
+<script type="text/javascript">
+ var url = 'http://${1:name}.mobimenu.fr'; var redirect_ipad = false;
+</script>
+<script src="http://detect.mobimenu.fr/mobile.js" type="text/javascript"></script>
+
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://${1:this}.mobimenu.fr"/>
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>1001redirect</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

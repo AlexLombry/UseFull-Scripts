@@ -1,0 +1,21 @@
+<snippet>
+    <content><![CDATA[
+namespace ${1:namespace};
+
+// Import serviceprovider of laravel
+use Illuminate\Support\ServiceProvider;
+
+class ${2:Class}ServiceProvider extends ServiceProvider
+{
+    // Bind to the IOC Container our services
+    public function register()
+    {
+        $this->app->bind('${3:name}', '${4:where}');
+    }
+}
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>pprovider</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>

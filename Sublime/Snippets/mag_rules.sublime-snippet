@@ -1,0 +1,27 @@
+<snippet>
+    <content><![CDATA[
+/**
+ * Validation rules
+ * The save array are validation rules that are applicable
+ * whenever the model is changed.
+ *
+ * The create and update arrays are only added on their respective methods.
+ * @var array
+ */
+public static \$rules = [
+    "save" => [
+        '${1:varName}' => 'required',
+    ],
+    "create" => [
+        '${1:varName}' => 'required',
+    ],
+    "update" => [
+        '${1:varName}' => 'required',
+    ]
+];
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>mag_rules</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <!-- <scope>source.python</scope> -->
+</snippet>
